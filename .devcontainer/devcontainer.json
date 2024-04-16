@@ -1,0 +1,57 @@
+{
+  "name": "sri",
+  "image": "mcr.microsoft.com/devcontainers/rust:0-1-bullseye",
+  "postCreateCommand": "sh .devcontainer/install_tooling.sh",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "github.vscode-github-actions",
+        "ms-vscode-remote.remote-containers",
+        "yzhang.markdown-all-in-one",
+        "vivaxy.vscode-conventional-commits",
+        "usernamehw.errorlens",
+        "aaron-bond.better-comments",
+        "tkcandrade.code-annotation",
+        "bradlc.vscode-tailwindcss",
+        "ardenivanov.svelte-intellisense",
+        "serayuzgur.crates",
+        "rust-lang.rust-analyzer",
+        "skellock.just",
+        "vscode.theme-defaults"
+      ],
+      "settings": {
+        "lldb.executable": "/usr/bin/lldb",
+        "files.watcherExclude": {
+          "**/target/**": true
+        },
+        "rust-analyzer.diagnostics.disabled": [
+          "unresolved-proc-macro"
+        ],
+        "rust-analyzer.inlayHints.implicitDrops.enable": true,
+        "editor.formatOnSave": true,
+        "editor.fontWeight": "bold",
+        "explorer.compactFolders": false,
+        "workbench.colorTheme": "Default Dark Modern",
+        "workbench.preferredDarkColorTheme": "Monokai",
+        "workbench.activityBar.location": "top",
+        "workbench.sideBar.location": "right",
+        "tailwindCSS.includeLanguages": {
+          "rust": "html"
+        },
+        "[html]": {
+          "editor.defaultFormatter": "vscode.html-language-features"
+        },
+        "[css]": {
+          "editor.defaultFormatter": "vscode.css-language-features"
+        },
+        "[jsonc]": {
+          "editor.defaultFormatter": "vscode.json-language-features"
+        }
+      }
+    }
+  }
+}
