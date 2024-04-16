@@ -2,13 +2,23 @@
 list:
     just --list
 
+# Clean dist-sri
+clean-sri:
+    rm -rfv dist-sri
+
 # Run sri in dev mode
-debug-sri:
-    @wasm-pack build --target nodejs --no-pack --mode force --dev --out-name index --out-dir ../../dist-sri ./src/sri
+debug-sri: clean-sri
+    @wasm-pack build --target web --mode force --dev --out-name index --out-dir ../../dist-sri ./src/sri
 
 # Run sri in release mode
 release-sri:
-    @wasm-pack build --target nodejs --no-pack --mode force --release --out-name index --out-dir ../../dist-sri ./src/sri
+    @wasm-pack build --target deno --no-pack --mode force --release --out-name index --out-dir ../../dist-sri ./src/sri
+
+# Clean
+clean:
+    @rm -rf dist node_modules package-lock.json 
+    @npm cache clean target --force
+
 
 # Show all ports LISTEN
 show-listen-ports:

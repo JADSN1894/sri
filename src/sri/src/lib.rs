@@ -1,9 +1,11 @@
+use wasm_bindgen::prelude::*;
 
-use wasm_bindgen::{prelude::wasm_bindgen, JsValue};
+// #[wasm_bindgen(start)]
+// pub fn entrypoint() -> Result<(), JsValue> {
+//     Ok(())
+// }
 
 #[wasm_bindgen]
-pub fn sri() -> Result<String, JsValue> {
-
-    let output = "Hello world";
-    Ok(output.into())
+pub fn sri(input: String) -> String {
+    String::from(input)
 }

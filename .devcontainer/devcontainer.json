@@ -23,7 +23,7 @@
         "rust-lang.rust-analyzer",
         "skellock.just",
         "vscode.theme-defaults",
-        "denoland.vscode-deno"
+        "biomejs.biome"
       ],
       "settings": {
         "lldb.executable": "/usr/bin/lldb",
@@ -50,8 +50,17 @@
         "[css]": {
           "editor.defaultFormatter": "vscode.css-language-features"
         },
+        "[javascript]": {
+          "editor.defaultFormatter": "biomejs.biome"
+        },
+        "[typescript]": {
+          "editor.defaultFormatter": "biomejs.biome"
+        },
+        "[json]": {
+          "editor.defaultFormatter": "biomejs.biome"
+        },
         "[jsonc]": {
-          "editor.defaultFormatter": "vscode.json-language-features"
+          "editor.defaultFormatter": "biomejs.biome"
         }
       }
     }
