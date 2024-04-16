@@ -22,4 +22,4 @@ async function subresourceIntegrity(): Promise<string> {
 	return "Hello";
 }
 
-subresourceIntegrity();
+// subresourceIntegrity();
