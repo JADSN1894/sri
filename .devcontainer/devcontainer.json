@@ -1,6 +1,7 @@
 {
   "name": "sri",
-  "image": "mcr.microsoft.com/devcontainers/rust:0-1-bullseye",
+  // "image": "mcr.microsoft.com/devcontainers/rust:0-1-bullseye",
+  "dockerFile": "Dockerfile",
   "postCreateCommand": "sh .devcontainer/install_tooling.sh",
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {},
@@ -21,7 +22,8 @@
         "serayuzgur.crates",
         "rust-lang.rust-analyzer",
         "skellock.just",
-        "vscode.theme-defaults"
+        "vscode.theme-defaults",
+        "denoland.vscode-deno"
       ],
       "settings": {
         "lldb.executable": "/usr/bin/lldb",
