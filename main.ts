@@ -10,8 +10,6 @@
 
 import init, { sri } from "./dist-sri/index.js";
 
-type Algorithm = "sha256" | "sha384" | "sha512";
-
 async function subresourceIntegrity(): Promise<string> {
 	console.log("[FROM TS]: subresourceIntegrity()");
 
@@ -22,4 +20,4 @@ async function subresourceIntegrity(): Promise<string> {
 	return "Hello";
 }
 
-// subresourceIntegrity();
+subresourceIntegrity();
