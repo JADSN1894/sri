@@ -18,3 +18,5 @@ Cargo.lock
 
 dist
 dist-ui
+
+example

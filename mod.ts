@@ -4,6 +4,11 @@
 //* 3. Obtain the sha-[256 | 512] of the files
 //* 4. Update the scripts and links of the index.html
 
-export function hello(): string {
+//* Arguments
+//* 1. Airtifact folder
+//* 2. Encoding algorithm
+
+export function subresourceIntegrity(): string {
+    console.log("subresourceIntegrity()");
     return "Hello"
 }
