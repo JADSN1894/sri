@@ -1,5 +1,5 @@
 {
 	"name": "@jadsn/vite-plugin-sri",
 	"version": "0.6.0",
-	"exports": ["./main.ts", "./dist-sri"]
+	"exports": { ".": "./main.ts", "./dist-sri": "./dist-sri/*" }
 }
