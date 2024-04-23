@@ -7,4 +7,4 @@ edition.workspace = true
 crate_type = ["cdylib"]
 
 [dependencies]
-wasm-bindgen = { version = "=0.2.90" }
+wasm-bindgen = { workspace = true }

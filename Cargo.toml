@@ -15,4 +15,4 @@ unsafe_code = "forbid"
 enum_glob_use = "deny"
 
 [workspace.dependencies]
-wasm-bindgen = { version = "0.2.90" }
+wasm-bindgen = { version = "=0.2.91" }
