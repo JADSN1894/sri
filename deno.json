@@ -2,8 +2,10 @@
 	"name": "@jadsn/vite-plugin-sri",
 	"version": "0.7.0",
 	"tasks": {
-		"wasmbuild": "deno run -A https://deno.land/x/wasmbuild@0.15.6/main.ts",
+		"wasmbuild": "deno run -A  jsr:@deno/wasmbuild@0.15.6/main.ts",
 		"dev": "deno run --watch main.ts"
 	},
-	"exports": "./main.ts"
+	"exports": {
+		".": "./main.ts"
+	}
 }
