@@ -4,8 +4,8 @@
   "dockerFile": "Dockerfile",
   "postCreateCommand": "sh .devcontainer/install_tooling.sh",
   "features": {
-    "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers/features/node:1": {}
+    "ghcr.io/devcontainers/features/github-cli:1.0.11": {},
+    "ghcr.io/devcontainers/features/node:1.4.1": {}
   },
   "customizations": {
     "vscode": {
@@ -23,12 +23,14 @@
         "rust-lang.rust-analyzer",
         "skellock.just",
         "vscode.theme-defaults",
-        "biomejs.biome"
+        "biomejs.biome",
+        "denoland.vscode-deno"
       ],
       "settings": {
         "lldb.executable": "/usr/bin/lldb",
         "files.watcherExclude": {
-          "**/target/**": true
+          "**/target/**": true,
+          "**/node_modules/**": true
         },
         "rust-analyzer.diagnostics.disabled": [
           "unresolved-proc-macro"
@@ -41,9 +43,6 @@
         "workbench.preferredDarkColorTheme": "Monokai",
         "workbench.activityBar.location": "top",
         "workbench.sideBar.location": "right",
-        "tailwindCSS.includeLanguages": {
-          "rust": "html"
-        },
         "[html]": {
           "editor.defaultFormatter": "vscode.html-language-features"
         },

@@ -3,10 +3,7 @@
 	"version": "0.6.0",
 	"exports": {
 		".": "./main.ts",
-		"./dist-sri/index_bg.wasm": "./dist-sri/index_bg.wasm",
-		"./dist-sri/index_bg.wasm.d.ts": "./dist-sri/index_bg.wasm.d.ts",
-		"./dist-sri/index.d.ts": "./dist-sri/index.d.ts",
-		"./dist-sri/index.js": "./dist-sri/index.js",
-		"./dist-sri/package.json": "./dist-sri/package.json"
+		"./dist/main.js": "./dist/main.js",
+		"./dist/main.d.ts": "./dist/main.d.ts"
 	}
 }

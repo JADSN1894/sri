@@ -8,16 +8,53 @@
 //* 1. Airtifact folder
 //* 2. Encoding algorithm
 
-import init, { sri } from "./dist-sri/index.js";
+import { WASI } from "node:wasi";
+import { env } from "node:process";
+import { readFile } from "node:fs/promises";
+export type Algorithm = "Sha256" | "Sha384" | "Sha512";
 
-async function subresourceIntegrity(): Promise<string> {
-	console.log("[FROM TS]: subresourceIntegrity()");
+export interface SriOptions {
+	/**
+	 * Which hashing algorithms to use when calculate the integrity hash for each
+	 * asset in the manifest.
+	 *
+	 * @default 'Sha512'
+	 */
+	algorithm: Algorithm;
 
-	const sriOutput = await init().then(() => sri("asdf"));
-
-	console.log(sriOutput);
-
-	return "Hello";
+	/**
+	 * Airtifact path
+	 *
+	 * @default 'Sha512'
+	 */
+	outDir: string;
 }
 
-subresourceIntegrity();
+function subresourceIntegrity(
+	options: SriOptions = {
+		algorithm: "Sha512",
+		outDir: "dist",
+	},
+): void {
+	const { algorithm, outDir } = options;
+	const wasi = new WASI({
+		version: "preview1",
+		args: ["sri", algorithm, outDir],
+		env,
+		preopens: {
+			"/": "/",
+			".": ".",
+		},
+	});
+
+	(async () => {
+		const wasm = await WebAssembly.compile(await readFile("sri.wasm"));
+
+		const instance = new WebAssembly.Instance(wasm, {
+			wasi_snapshot_preview1: wasi.wasiImport,
+		});
+		wasi.start(instance);
+	})();
+}
+
+// subresourceIntegrity();
