@@ -2,17 +2,12 @@
 	"name": "@jadsn/vite-plugin-sri",
 	"version": "0.7.0",
 	"type": "module",
+	"main": "main.ts",
 	"scripts": {
 		"dev": "tsup ./main.ts --watch --ignore-watch examples --format esm --dts --clean",
 		"build": "tsup ./main.ts --format esm --dts --clean --minify"
 	},
-	"exports": {
-		".": {
-			"require": "./dist/main.js",
-			"import": "./dist/main.js",
-			"types": "./dist/main.d.ts"
-		}
-	},
+	"exports": "./main.ts",
 	"devDependencies": {
 		"@biomejs/biome": "1.7.1",
 		"@types/node": "20.12.7",
