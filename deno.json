@@ -1,6 +1,6 @@
 {
 	"name": "@jadsn/vite-plugin-sri",
-	"version": "0.7.0",
+	"version": "0.7.1",
 	"tasks": {
 		"wasmbuild": "deno run -A jsr:@deno/wasmbuild@0.15.6",
 		"dev": "deno run --watch main.ts"
