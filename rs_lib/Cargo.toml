@@ -1,0 +1,10 @@
+[package]
+name = "rs_lib"
+version.workspace = true
+edition.workspace = true
+
+[lib]
+crate_type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = { version = "=0.2.90" }

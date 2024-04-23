@@ -1,5 +1,5 @@
 [workspace]
-members = ["src/*"]
+members = ["rs_lib"]
 resolver = "2"
 
 [workspace.package]
@@ -15,4 +15,4 @@ unsafe_code = "forbid"
 enum_glob_use = "deny"
 
 [workspace.dependencies]
-wasm-bindgen = { version = "0.2.92" }
+wasm-bindgen = { version = "0.2.90" }
