@@ -24,7 +24,8 @@
         "skellock.just",
         "vscode.theme-defaults",
         "biomejs.biome",
-        "denoland.vscode-deno"
+        "denoland.vscode-deno",
+        "svelte.svelte-vscode"
       ],
       "settings": {
         "lldb.executable": "/usr/bin/lldb",
