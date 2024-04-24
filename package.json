@@ -8,7 +8,9 @@
 		"build": "tsup ./main.ts --format esm --dts --clean --minify"
 	},
 	"exports": {
-		".": "./main.ts"
+		".": "./main.ts",
+		"./wasm/index.js": "./wasm/index.js",
+		"./wasm/index.d.ts": "./wasm/index.d.ts"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.7.1",

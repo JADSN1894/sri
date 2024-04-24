@@ -5,7 +5,7 @@
 	"main": "main.ts",
 	"exports": {
 		".": "./main.ts",
-		"./pkg/index.js": "./pkg/index.js",
-		"./pkg/index.d.ts": "./pkg/index.d.ts"
+		"./wasm/index.js": "./wasm/index.js",
+		"./wasm/index.d.ts": "./wasm/index.d.ts"
 	}
 }
