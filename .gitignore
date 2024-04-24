@@ -21,3 +21,5 @@ dist-ui
 
 example
 /target
+
+*.wasm

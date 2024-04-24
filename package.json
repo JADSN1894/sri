@@ -4,9 +4,7 @@
 	"type": "module",
 	"main": "main.ts",
 	"exports": {
-		".": "./main.ts",
-		"./wasm/index.js": "./wasm/index.js",
-		"./wasm/index.d.ts": "./wasm/index.d.ts"
+		".": "./main.ts"
 	},
 	"devDependencies": {
 		"@types/node": "20.12.7",
