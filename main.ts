@@ -1,6 +1,6 @@
 import type { ResolvedConfig } from "vite";
 // import { greet } from "./wasm/index.js";
-import { WASI } from 'wasi';
+import { WASI } from 'node:wasi';
 import { readFile } from "node:fs/promises";
 
 export type Algorithm = "Sha256" | "Sha384" | "Sha512";
