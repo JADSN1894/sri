@@ -32,16 +32,9 @@ function subresourceIntegrity(
 		closeBundle: () => {
 			// const outDir = config?.build?.outDir;s
 
-			greet();
-			// const wasi = new WASI({
-			// 	version: "preview1",
-			// 	args: ["sri", algorithm, outDir],
-			// 	env,
-			// 	preopens: {
-			// 		"/": "/",
-			// 		".": ".",
-			// 	},
-			// });
+			const message = greet();
+			console.log("message");
+			console.log(message);
 		},
 	};
 }
