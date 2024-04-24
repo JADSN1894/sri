@@ -1,0 +1,14 @@
+{
+	"name": "@jadsn/vite-plugin-sri",
+	"version": "0.7.5",
+	"type": "module",
+	"main": "main.ts",
+	"exports": {
+		".": "./main.ts",
+		"./wasm/index.js": "./wasm/index.js",
+		"./wasm/index.d.ts": "./wasm/index.d.ts"
+	},
+	"devDependencies": {
+		"vite": "5.2.10"
+	}
+}

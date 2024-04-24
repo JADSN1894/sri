@@ -1,3 +1,6 @@
+import type { ResolvedConfig } from "vite";
+// import { greet } from "./wasm/index.js";
+
 export type Algorithm = "Sha256" | "Sha384" | "Sha512";
 
 export interface SriOptions {
@@ -16,15 +19,13 @@ export function subresourceIntegrity(
 	},
 ) {
 	const { algorithm } = options;
-	// biome-ignore lint/suspicious/noExplicitAny: no package.json
-	let config: any;
+	let config: ResolvedConfig;
 	return {
 		name: "vite-plugin-subresource-integrity",
 		apply: "build",
 		enforce: "post",
 
-		// biome-ignore lint/suspicious/noExplicitAny: no package.json
-		configResolved(resolvedConfig: any) {
+		configResolved(resolvedConfig: ResolvedConfig) {
 			config = resolvedConfig;
 		},
 
