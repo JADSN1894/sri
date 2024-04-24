@@ -1,7 +1,7 @@
 import type { ResolvedConfig, Plugin } from "vite";
 import { exec } from "node:child_process";
 
-export type Algorithm = "Sha256" | "Sha384" | "Sha512";
+export type SriHashAlgorithm = "Sha256" | "Sha384" | "Sha512";
 
 export type SriAirtifactPath = {
 	airtifactPath: string
@@ -14,7 +14,7 @@ export interface SriOptions {
 	 *
 	 * @default 'Sha512'
 	 */
-	algorithm: Algorithm;
+	algorithm: SriHashAlgorithm;
 
 	/**
 	 * Airtifact path
