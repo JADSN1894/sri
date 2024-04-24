@@ -1,4 +1,4 @@
-import type { ResolvedConfig } from "vite";
+import type { ResolvedConfig, Plugin } from "vite";
 import { exec } from "node:child_process";
 
 export type Algorithm = "Sha256" | "Sha384" | "Sha512";
@@ -29,7 +29,7 @@ export function subresourceIntegrity(
 		algorithm: "Sha512",
 		airtifactPath: { airtifactPath: "dist" }
 	}
-) {
+): Plugin {
 	const { algorithm } = options;
 	let config: ResolvedConfig;
 	return {
