@@ -18,6 +18,14 @@ clean:
     @rm -rf dist node_modules package-lock.json 
     @npm cache clean target --force
 
+# Test sri
+test-sri:
+    @rm -rfv sriwasm/ sri.wasm
+    @git clone https://github.com/JADSN1894/sriwasm
+    @cp -v ./sriwasm/sri.wasm ./
+    @rm -rfv sriwasm/
+    @deno run -A main.ts
+    # @bun run main.ts
 
 # Show all ports LISTEN
 show-listen-ports:

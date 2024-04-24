@@ -53,3 +53,13 @@ gh --repo $CURRENT_REPO --pattern "$DOWNLOADED_FILE" release download $CURRENT_V
 tar -xvf $DOWNLOADED_FILE
 mv ${TMP_FOLDER}/wasm-pack ./
 rm -rf $DOWNLOADED_FILE $TMP_FOLDER
+
+## Install wasmtime (`wasmtime`)
+CURRENT_REPO="bytecodealliance/wasmtime"
+CURRENT_VERSION=$(gh --repo $CURRENT_REPO release view --json tagName --jq .tagName)
+DOWNLOADED_FILE=$(gh --repo $CURRENT_REPO release view --json assets --jq '.assets[] | select(.name | contains("x86_64") and contains("linux") and (contains("c-api") | not)  and endswith(".tar.xz")) .name')
+DOWNLOADED_FILE_WITHOUT_EXTENSION=$(basename $DOWNLOADED_FILE .tar.xz)
+gh --repo $CURRENT_REPO --pattern "$DOWNLOADED_FILE" release download $CURRENT_VERSION
+tar -xvf $DOWNLOADED_FILE $DOWNLOADED_FILE_WITHOUT_EXTENSION/wasmtime $DOWNLOADED_FILE_WITHOUT_EXTENSION/wasmtime-min
+mv -v ${DOWNLOADED_FILE_WITHOUT_EXTENSION}/* ./
+rm -rfv $DOWNLOADED_FILE $DOWNLOADED_FILE_WITHOUT_EXTENSION
