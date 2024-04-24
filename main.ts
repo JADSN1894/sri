@@ -1,7 +1,5 @@
-import { WASI } from "node:wasi";
-import { env } from "node:process";
-import { readFile } from "node:fs/promises";
 import type { Plugin, ResolvedConfig } from "vite";
+import { greet } from "./wasm/index.js";
 
 export type Algorithm = "Sha256" | "Sha384" | "Sha512";
 
@@ -34,24 +32,16 @@ function subresourceIntegrity(
 		closeBundle: () => {
 			const outDir = config?.build?.outDir;
 
-			const wasi = new WASI({
-				version: "preview1",
-				args: ["sri", algorithm, outDir],
-				env,
-				preopens: {
-					"/": "/",
-					".": ".",
-				},
-			});
-
-			(async () => {
-				const wasm = await WebAssembly.compile(await readFile("sri.wasm"));
-
-				const instance = new WebAssembly.Instance(wasm, {
-					wasi_snapshot_preview1: wasi.wasiImport,
-				});
-				wasi.start(instance);
-			})();
+			greet();
+			// const wasi = new WASI({
+			// 	version: "preview1",
+			// 	args: ["sri", algorithm, outDir],
+			// 	env,
+			// 	preopens: {
+			// 		"/": "/",
+			// 		".": ".",
+			// 	},
+			// });
 		},
 	};
 }

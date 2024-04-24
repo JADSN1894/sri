@@ -8,9 +8,8 @@ clean-sri:
 
 # Run sri in dev mode
 debug-sri: clean-sri
-    @wasm-pack build --target web --mode force --dev --out-name index --out-dir ../../dist-sri ./src/sri
-
-# Run sri in release mode
+    @wasm-pack build --target deno --out-name=index --no-pack --mode=force --release --out-dir=../pkg ./poc
+    
 release-sri:
     @wasm-pack build --target deno --no-pack --mode force --release --out-name index --out-dir ../../dist-sri ./src/sri
 
