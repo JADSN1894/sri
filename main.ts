@@ -41,8 +41,9 @@ export interface SriOptions {
 }
 
 /**
- * Airtifact path
- *
+ * @param options Sri argument options 
+ * @returns The vite Plugin type
+ * 	
  * SRI vite plugin
  */
 export function subresourceIntegrity(
@@ -72,9 +73,13 @@ export function subresourceIntegrity(
 	};
 }
 
-
-
-function executeSriAtVite(sriOptions: SriOptions) {
+/**
+ * @param options Sri argument options 
+ * @returns Nothing
+ * 	
+ * Execute wasmtime with SriOptions at subresourceIntegrity function
+ */
+function executeSriAtVite(sriOptions: SriOptions): void {
 	const { algorithm, airtifactPath: { airtifactPath } } = sriOptions;
 	const command = `wasmtime --dir=/ --dir=. ./sri.wasm ${algorithm} ${airtifactPath}`;
 	exec(command, (error, stdout, stderr) => {
