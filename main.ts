@@ -93,7 +93,7 @@ function executeSriAtVite(sriOptions: SriOptions): void {
   });
 }
 
-executeSriAtVite({
-  algorithm: "Sha512",
-  airtifactPath: { airtifactPath: "dist" },
-});
+// executeSriAtVite({
+//   algorithm: "Sha512",
+//   airtifactPath: { airtifactPath: "dist" },
+// });
