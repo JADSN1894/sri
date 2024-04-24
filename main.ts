@@ -1,9 +1,11 @@
 import type { ResolvedConfig } from "vite";
-// import { greet } from "./wasm/index.js";
-import { WASI } from 'node:wasi';
-import { readFile } from "node:fs/promises";
+import { exec } from "node:child_process";
 
 export type Algorithm = "Sha256" | "Sha384" | "Sha512";
+
+export type SriAirtifactPath = {
+	airtifactPath: string
+}
 
 export interface SriOptions {
 	/**
@@ -13,12 +15,20 @@ export interface SriOptions {
 	 * @default 'Sha512'
 	 */
 	algorithm: Algorithm;
+
+	/**
+	 * Airtifact path
+	 *
+	 * @default 'Sha512'
+	 */
+	airtifactPath: SriAirtifactPath;
 }
 
 export function subresourceIntegrity(
 	options: SriOptions = {
 		algorithm: "Sha512",
-	},
+		airtifactPath: { airtifactPath: "dist" }
+	}
 ) {
 	const { algorithm } = options;
 	let config: ResolvedConfig;
@@ -33,26 +43,30 @@ export function subresourceIntegrity(
 
 		closeBundle: () => {
 			const outDir = config?.build?.outDir;
-
-
-			const wasi = new WASI({
-				version: "preview1",
-				args: ["sri", algorithm, outDir],
-				preopens: {
-					"/": "/",
-					".": ".",
-				},
+			executeSriAtVite({
+				algorithm,
+				airtifactPath: { airtifactPath: outDir }
 			});
-
-			(async () => {
-				const wasm = await WebAssembly.compile(await readFile("sri.wasm"));
-
-				const instance = new WebAssembly.Instance(wasm, {
-					wasi_snapshot_preview1: wasi.wasiImport,
-				});
-				wasi.start(instance);
-			})();
-
 		},
 	};
 }
+
+
+
+function executeSriAtVite(sriOptions: SriOptions) {
+	const { algorithm, airtifactPath: { airtifactPath } } = sriOptions;
+	const command = `wasmtime --dir=/ --dir=. ./sri.wasm ${algorithm} ${airtifactPath}`;
+	exec(command, (error, stdout, stderr) => {
+		if (error) {
+			console.error(`[VITE PLUGIN - subresourceIntegrity - error]: ${error}`);
+			return;
+		}
+		console.log(`[VITE PLUGIN - subresourceIntegrity - stdout]: ${stdout}`);
+		console.error(`[VITE PLUGIN - subresourceIntegrity - stderr]:  ${stderr}`);
+	});
+}
+
+executeSriAtVite({
+	algorithm: "Sha512",
+	airtifactPath: { airtifactPath: "dist" }
+});
