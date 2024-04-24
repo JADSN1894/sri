@@ -1,12 +1,28 @@
 import type { ResolvedConfig, Plugin } from "vite";
 import { exec } from "node:child_process";
 
+/**
+ * Which hashing algorithms to use when calculate the integrity hash for each
+ * asset in the manifest.
+ *
+ * @default 'Sha512'
+ */
 export type SriHashAlgorithm = "Sha256" | "Sha384" | "Sha512";
 
+/**
+ * Airtifact path
+ *
+ * @default 'dist'
+ */
 export type SriAirtifactPath = {
 	airtifactPath: string
 }
 
+/**
+ * Sri argument options
+ *
+ * @default 
+ */
 export interface SriOptions {
 	/**
 	 * Which hashing algorithms to use when calculate the integrity hash for each
@@ -19,11 +35,16 @@ export interface SriOptions {
 	/**
 	 * Airtifact path
 	 *
-	 * @default 'Sha512'
+	 * @default '{ algorithm: "Sha512", airtifactPath: { airtifactPath: "dist" }'
 	 */
 	airtifactPath: SriAirtifactPath;
 }
 
+/**
+ * Airtifact path
+ *
+ * SRI vite plugin
+ */
 export function subresourceIntegrity(
 	options: SriOptions = {
 		algorithm: "Sha512",
@@ -66,7 +87,7 @@ function executeSriAtVite(sriOptions: SriOptions) {
 	});
 }
 
-executeSriAtVite({
-	algorithm: "Sha512",
-	airtifactPath: { airtifactPath: "dist" }
-});
+// executeSriAtVite({
+// 	algorithm: "Sha512",
+// 	airtifactPath: { airtifactPath: "dist" }
+// });
