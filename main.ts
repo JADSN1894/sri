@@ -1,5 +1,5 @@
 import type { Plugin, ResolvedConfig } from "vite";
-import { greet } from "./wasm/index.js";
+// import { greet } from "./wasm/index.js";
 
 export type Algorithm = "Sha256" | "Sha384" | "Sha512";
 
@@ -30,9 +30,8 @@ function subresourceIntegrity(
 		},
 
 		closeBundle: () => {
-			const outDir = config?.build?.outDir;
-
-			greet();
+			// const outDir = config?.build?.outDir;s
+			// greet();
 			// const wasi = new WASI({
 			// 	version: "preview1",
 			// 	args: ["sri", algorithm, outDir],
