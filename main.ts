@@ -1,6 +1,6 @@
 import type { ResolvedConfig } from "vite";
 // import { greet } from "./wasm/index.js";
-
+import { WASI } from 'wasi';
 export type Algorithm = "Sha256" | "Sha384" | "Sha512";
 
 export interface SriOptions {
@@ -32,9 +32,25 @@ export function subresourceIntegrity(
 		closeBundle: () => {
 			const outDir = config?.build?.outDir;
 
-			console.log("closeBundle()");
-			console.log("outDir");
-			console.log(outDir);
+
+			const wasi = new WASI({
+				version: "preview1",
+				args: ["sri", algorithm, outDir],
+				preopens: {
+					"/": "/",
+					".": ".",
+				},
+			});
+
+			(async () => {
+				const wasm = await WebAssembly.compile(await readFile("sri.wasm"));
+
+				const instance = new WebAssembly.Instance(wasm, {
+					wasi_snapshot_preview1: wasi.wasiImport,
+				});
+				wasi.start(instance);
+			})();
+
 		},
 	};
 }
