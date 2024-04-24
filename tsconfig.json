@@ -61,7 +61,7 @@
 		/* Advanced Options */
 		"skipLibCheck": true /* Skip type checking of declaration files. */,
 		"forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
-		"moduleResolution": "Node16"
+		"moduleResolution": "NodeNext"
 	},
 	"include": ["main.ts"],
 	"exclude": ["example/**/**"]

@@ -6,17 +6,18 @@ list:
 clean-sri:
     rm -rfv dist-sri
 
-# Run sri in dev mode
-debug-sri: clean-sri
-    @wasm-pack build --target deno --out-name=index --no-pack --mode=force --dev --out-dir=../dist-sri ./sri
-    
-release-sri:
-    @wasm-pack build --target deno --no-pack --mode force --release --out-name index --out-dir ../../dist-sri ./src/sri
-
 # Clean
 clean:
     @rm -rf dist node_modules package-lock.json 
     @npm cache clean target --force
+
+# Build release
+sri-release-build:
+    cargo build --release -p sri --target wasm32-wasi
+
+# Build run
+release-run: sri-release-build
+    wasmtime --dir=/ --dir=. ./target/wasm32-wasi/release/sri.wasm Sha512 ./dist
 
 # Test sri
 test-sri:
