@@ -30,9 +30,11 @@ export function subresourceIntegrity(
 		},
 
 		closeBundle: () => {
-			// const outDir = config?.build?.outDir;s
+			const outDir = config?.build?.outDir;
 
 			console.log("closeBundle()");
+			console.log("outDir");
+			console.log(outDir);
 		},
 	};
 }
