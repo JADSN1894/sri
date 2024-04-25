@@ -39,7 +39,7 @@ jobs:
         sudo apt-get update
         
     - name: Build
-      run: cargo build --verbose
+      run: cargo build --release --verbose
 
     - name: Copy files
       run: |
