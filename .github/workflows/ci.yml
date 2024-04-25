@@ -64,7 +64,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: 'sriwasm'
-          path: ./sri.wasm
+          path: ./target/wasm32-wasi/release/sri.wasm
 
       - name: Bump version and push tag
         id: tag_version
