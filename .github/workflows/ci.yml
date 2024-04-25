@@ -50,6 +50,8 @@ jobs:
       with:
           name: 'sriwasm'
           path: ./target/wasm32-wasi/release/sri.wasm
+          compression-level: 9
+          if-no-files-found: error
           
   generate-tag-and-release:
     runs-on: ubuntu-latest
@@ -64,7 +66,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: 'sriwasm'
-          path: ./target/wasm32-wasi/release/sri.wasm
+          path: ./*
+      - run: ls -lha ./
 
       - name: Bump version and push tag
         id: tag_version
@@ -79,5 +82,3 @@ jobs:
           tag: ${{ steps.tag_version.outputs.new_tag }}
           name: ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.tag_version.outputs.changelog }}
-
- 
