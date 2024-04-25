@@ -43,7 +43,7 @@ jobs:
 
     - name: Copy files
       run: |
-          ls -lha
+          ls -lha target
           # cp -fv ~/target/wasm32-wasi/release/sri.wasm  ./
 
     # - name: Upload Sri Wasm
