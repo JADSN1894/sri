@@ -21,7 +21,7 @@ Adds subresource integrity hashes to script and stylesheet imports from at index
 
 ## Usage
 
-Install wasmtime: `curl https://wasmtime.dev/install.sh -sSf | bash` and download the `sri.wasm` compiled executing the code below:
+Install wasmtime: `curl https://wasmtime.dev/install.sh -sSf | bash` and download the `sri.wasm` compiled executing the code below at the project root:
 
 ```bash
 rm -rfv sriwasm/
@@ -31,9 +31,15 @@ rm -rfv sriwasm/
 npm run build # Your build script
 ```
 
+or 
+
+```bash
+wget -c https://github.com/JADSN1894/sri/releases/download/<TAG_VERSION>/sri.wasm
+```
+
 ## Ohh!! Is not a Vite(or another bundler) then...
 
-**Execute:** `wasmtime --dir=/ --dir=. <filename>.wasm <hash algorithm> <airtifact_folder>`
+**Execute:** `wasmtime --dir=/ --dir=. <filename>.wasm <hash_algorithm> <airtifact_folder>`
 
 **Example:** `wasmtime --dir=/ --dir=. ./sri.wasm Sha512 ./dist`
 
