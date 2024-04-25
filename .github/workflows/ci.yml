@@ -41,15 +41,16 @@ jobs:
     - name: Build
       run: cargo build --release
 
-    # - name: Copy files
-    #   run: |
-    #       cp -fv ./target/wasm32-wasi/release/sri.wasm  ./
+    - name: Copy files
+      run: |
+          mkdir -pv artifacts
+          cp -fv ./target/wasm32-wasi/release/sri.wasm artifacts/sri.wasm
 
     - name: Upload Sri Wasm
       uses: actions/upload-artifact@v4
       with:
           name: 'sri.wasm'
-          path: './target/wasm32-wasi/release/sri.wasm'
+          path: 'artifacts/sri.wasm'
           compression-level: 9
           if-no-files-found: error
           
@@ -66,7 +67,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: 'sri.wasm'
-          path: 'target/wasm32-wasi/release/sri.wasm'
+          path: ./artifacts
 
       - name: Bump version and push tag
         id: tag_version
@@ -77,7 +78,7 @@ jobs:
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: 'target/wasm32-wasi/release/sri.wasm'
+          artifacts: './combined_artifacts/sri.wasm'
           tag: ${{ steps.tag_version.outputs.new_tag }}
           name: ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.tag_version.outputs.changelog }}
