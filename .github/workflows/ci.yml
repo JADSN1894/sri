@@ -48,7 +48,7 @@ jobs:
     - name: Upload Sri Wasm
       uses: actions/upload-artifact@v4
       with:
-          name: 'sriwasm'
+          name: 'sri.wasm'
           path: ./target/wasm32-wasi/release/sri.wasm
           compression-level: 9
           if-no-files-found: error
@@ -65,8 +65,8 @@ jobs:
       - name: Download Sri Wasm
         uses: actions/download-artifact@v4
         with:
-          name: 'sriwasm'
-          path: ./*
+          name: 'sri.wasm'
+          path: sri.wasm
       - run: ls -lha ./
 
       - name: Bump version and push tag
