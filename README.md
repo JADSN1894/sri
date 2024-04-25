@@ -13,35 +13,24 @@ Adds subresource integrity hashes to script and stylesheet imports from at index
 
 ## Before
 
-![Before execution](./misc/BeforeBuild.png)
+![Before execution](./imgs/BeforeBuild.png)
 
 ## After
 
-![After execution](./misc/AfterBuild.png)
+![After execution](./imgs/AfterBuild.png)
 
 ## Usage
 
-Install wasmtime: `curl https://wasmtime.dev/install.sh -sSf | bash` and download the `sri.wasm` compiled executing the code below at the project root:
+1. Install wasmtime: `curl https://wasmtime.dev/install.sh -sSf | bash` 
+1. Download the `sri.wasm` compiled executing the code below at the project root: `wget -c https://github.com/JADSN1894/sri/releases/download/<TAG_VERSION>/sri.wasm`
+1. In your vite.config.js file:
 
-```bash
-rm -rfv sriwasm/
-git clone https://github.com/JADSN1894/sriwasm
-cp -v ./sriwasm/sri.wasm ./
-rm -rfv sriwasm/
-npm run build # Your build script
-```
-
-or 
-
-```bash
-wget -c https://github.com/JADSN1894/sri/releases/download/<TAG_VERSION>/sri.wasm
-```
+![Jsr sri package import](./imgs/SriPackageImport.png)
 
 ## Ohh!! Is not a Vite(or another bundler) then...
 
-**Execute:** `wasmtime --dir=/ --dir=. <filename>.wasm <hash_algorithm> <airtifact_folder>`
-
-**Example:** `wasmtime --dir=/ --dir=. ./sri.wasm Sha512 ./dist`
+- **Execute:** `wasmtime --dir=/ --dir=. <filename>.wasm <hash_algorithm> <airtifact_folder>`
+- **Example:** `wasmtime --dir=/ --dir=. ./sri.wasm Sha512 ./dist`
 
 ## Disclaimer
 
