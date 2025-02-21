@@ -16,7 +16,7 @@ pub(super) enum AlgorithmSri {
 
 impl AlgorithmSri {
   fn hexadecimal_to_base64(hexadecimal: &str) -> SriResult<String> {
-    use base64::{engine::general_purpose::STANDARD, Engine as _};
+    use base64::{Engine as _, engine::general_purpose::STANDARD};
 
     let bytes = (0..hexadecimal.len() / 2)
       .map(|i| u8::from_str_radix(&hexadecimal[2 * i..2 * i + 2], 16))

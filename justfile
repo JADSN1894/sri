@@ -13,11 +13,11 @@ clean:
 
 # Build release
 sri-release-build:
-    cargo build --release -p sri --target wasm32-wasi
+    cargo build --release -p sri --target wasm32-wasip2
 
 # Build run
 release-run: sri-release-build
-    wasmtime --dir=/ --dir=. ./target/wasm32-wasi/release/sri.wasm Sha512 ./dist
+    wasmtime --dir=/ --dir=. ./target/wasm32-wasip2/release/sri.wasm Sha512 ./dist
 
 # Test sri
 test-sri:

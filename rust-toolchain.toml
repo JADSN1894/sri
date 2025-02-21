@@ -1,5 +1,5 @@
 [toolchain]
 channel = "stable"
-components = ["rust-analyzer", "cargo"]
-targets = ["wasm32-wasi"]
+components = ["rust-analyzer", "cargo", "rust-std-wasm32-wasi"]
+targets = ["wasm32-wasip2"]
 profile = "default"

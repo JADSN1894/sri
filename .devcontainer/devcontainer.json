@@ -4,8 +4,8 @@
   "dockerFile": "Dockerfile",
   "postCreateCommand": "sh .devcontainer/install_tooling.sh",
   "features": {
-    "ghcr.io/devcontainers/features/github-cli:1.0.11": {},
-    "ghcr.io/devcontainers/features/node:1.4.1": {},
+    "ghcr.io/devcontainers/features/github-cli:1.0.13": {},
+    "ghcr.io/devcontainers/features/node:1.6.1": {},
     "ghcr.io/shyim/devcontainers-features/bun:0.0.1": {}
   },
   "customizations": {
@@ -20,13 +20,13 @@
         "tkcandrade.code-annotation",
         "bradlc.vscode-tailwindcss",
         "ardenivanov.svelte-intellisense",
-        "serayuzgur.crates",
         "rust-lang.rust-analyzer",
         "skellock.just",
         "vscode.theme-defaults",
         "biomejs.biome",
         "denoland.vscode-deno",
-        "svelte.svelte-vscode"
+        "svelte.svelte-vscode",
+        "fill-labs.dependi"
       ],
       "settings": {
         "lldb.executable": "/usr/bin/lldb",

@@ -8,5 +8,14 @@
 	},
 	"tasks": {
 		"dev": "deno run --watch main.ts"
-	}
+  },
+  "compilerOptions": {
+    "lib": [
+      "DOM"
+    ],
+    "strict": true
+  },
+  "unstable": [
+    "sloppy-imports"
+  ]
 }
